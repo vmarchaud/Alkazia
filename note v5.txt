@@ -1,0 +1,4 @@
+plugin tchat across server : https://github.com/andrepl/RedisChat
+plugin faction across server : https://github.com/MassiveCraft/Factions (need to enable mongo database)
+plugin sync across server : https://www.spigotmc.org/resources/redsync.8985/
+plugin ban across server : https://www.spigotmc.org/resources/bungee-admin-tools.444/
