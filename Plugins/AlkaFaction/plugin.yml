@@ -1,0 +1,168 @@
+name: Factions
+version: 1.8.2
+main: com.massivecraft.factions.P
+# AlkaziaFactions
+authors: [Olof Cayorion Larsson, Brett Flannigan, Rellynn]
+depend: [Vault]
+softdepend: [PermissionsEx, Permissions, Essentials, EssentialsChat, HeroChat, iChat, LocalAreaChat, LWC, nChat, ChatManager, CAPI, AuthMe, Spout, WorldEdit, WorldGuard, AuthDB, CaptureThePoints, CombatTag]
+commands:
+  factions:
+    description: The Factions base command
+    aliases: [f]
+  facxp:
+permissions:
+# -------------------------------------------- #
+# THE REAL NODES
+# -------------------------------------------- #
+  factions.access: {description: grant territory access for your faction, with the proper fperm}
+  factions.access.any: {description: grant territory access for any faction}
+  factions.access.view: {description: view territory access info for your faction}
+  factions.adminmode: {description: enable admin bypass mode}
+  factions.autoclaim: {description: auto-claim land as you walk around}
+  factions.cape: {description: manage faction capes}
+  factions.cape.get: {description: get faction cape}
+  factions.cape.set: {description: set faction cape}
+  factions.cape.remove: {description: remove faction cape}
+  factions.claim: {description: claim land where you are standing}
+  factions.claim.radius: {description: claim land in a large radius}
+  factions.config: {description: change a conf.json setting}
+  factions.create: {description: create a new faction}
+  factions.deinvite: {description: remove a pending invitation}
+  factions.demote: {description: demote lesser members in your faction}
+  factions.description: {description: change the faction description}
+  factions.disband: {description: disband a faction}
+  factions.flag: {description: read faction flags}
+  factions.flag.set: {description: set faction flags}
+  factions.help: {description: display a help page}
+  factions.home: {description: teleport to the faction home}
+  factions.invite: {description: invite a player to your faction}
+  factions.join: {description: join a faction}
+  factions.join.any: {description: join any faction, bypassing invitation process for closed factions}
+  factions.join.others: {description: specify another player in the join command, to move them to the specified faction}
+  factions.kick: {description: kick a player from the faction}
+  factions.leader: {description: hand over leader rights}
+  factions.leader.any: {description: give or revoke leader status for any player in any faction}
+  factions.leave: {description: leave your faction}
+  factions.list: {description: see a list of the factions}
+  factions.lock: {description: lock all write stuff}
+  factions.map: {description: show the territory map, and set optional auto update}
+  factions.money.balance: {description: show your factions current money balance}
+  factions.money.balance.any: {description: show money balance for factions other than your own}
+  factions.money.deposit: {description: deposit money into a faction bank}
+  factions.money.f2f: {description: transfer money from faction to faction}
+  factions.money.f2p: {description: transfer money from faction to player}
+  factions.money.p2f: {description: transfer money from player to faction}
+  factions.money.withdraw: {description: withdraw money from your faction bank}
+  factions.officer: {description: give or revoke officer rights}
+  factions.officer.any: {description: give or revoke officer rights for any player in any faction}
+  factions.open: {description: switch if invitation is required to join}
+  factions.perm: {description: change faction permissions}
+  factions.power: {description: show player power info}
+  factions.power.any: {description: view an other players power level}
+  factions.powerboost: {description: apply permanent power bonus/penalty to specified player or faction}
+  factions.promote: {description: promote lesser members in your faction}
+  factions.relation: {description: set relation wish to another faction}
+  factions.reload: {description: reload data file(s) from disk}
+  factions.save: {description: save all data to disk}
+  factions.seechunk: {description: see the chunk you stand in}
+  factions.sethome: {description: set the faction home}
+  factions.show: {description: show faction information}
+  factions.tag: {description: change the faction tag}
+  factions.title: {description: set or remove a players title}
+  factions.unclaim: {description: unclaim the land where you are standing}
+  factions.unclaimall: {description: unclaim all of your factions land}
+  factions.version: {description: see the version of the plugin}
+  factions.givexp: {description: give xp}
+# End AlkaziaFactions
+# -------------------------------------------- #
+# STAR NOTATION
+# -------------------------------------------- #
+  factions.cape.*:
+    children:
+      factions.cape.get: true
+      factions.cape.set: true
+      factions.cape.remove: true
+  factions.money.*:
+    children:
+      factions.money.balance: true
+      factions.money.balance.any: true
+      factions.money.deposit: true
+      factions.money.f2f: true
+      factions.money.f2p: true
+      factions.money.p2f: true
+      factions.money.withdraw: true
+# -------------------------------------------- #
+# KITS
+# -------------------------------------------- #
+  factions.kit.admin:
+    description: All faction permissions.
+    children:
+      factions.kit.mod: true
+      factions.config: true
+      factions.lock: true
+      factions.reload: true
+      factions.save: true
+  factions.*:
+    description: This is just an alias for factions.kit.admin
+    children:
+      factions.kit.admin: true
+  factions.kit.mod:
+    description: All faction permissions but configuration and persistance.
+    children:
+      factions.kit.halfmod: true
+      factions.flag.set: true
+      factions.powerboost: true
+      factions.join.any: true
+      factions.join.others: true
+      factions.leader.any: true
+      factions.officer.any: true
+      factions.access.any: true
+  factions.kit.halfmod:
+    description: Can use adminmode and chat spy
+    children:
+      factions.kit.fullplayer: true
+      factions.adminmode: true
+  factions.kit.fullplayer:
+    description: Can also create new factions.
+    children:
+      factions.kit.halfplayer: true
+      factions.create: true
+  factions.kit.halfplayer:
+    description: Can do all but create factions.
+    children:
+      factions.access: true
+      factions.access.view: true
+      factions.autoclaim: true
+      factions.cape: true
+      factions.cape.*: true
+      factions.claim: true
+      factions.claim.radius: true
+      factions.deinvite: true
+      factions.demote: true
+      factions.description: true
+      factions.disband: true
+      factions.flag: true
+      factions.help: true
+      factions.home: true
+      factions.invite: true
+      factions.join: true
+      factions.kick: true
+      factions.leader: true
+      factions.leave: true
+      factions.list: true
+      factions.map: true
+      factions.money.*: true
+      factions.open: true
+      factions.perm: true
+      factions.power: true
+      factions.power.any: true
+      factions.promote: true
+      factions.relation: true
+      factions.seechunk: true
+      factions.sethome: true
+      factions.show: true
+      factions.tag: true
+      factions.title: true
+      factions.unclaim: true
+      factions.unclaimall: true
+      factions.version: true

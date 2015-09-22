@@ -1,0 +1,8 @@
+name: AlkaExchange
+author: Rellynn
+version: 1.0.1
+main: me.rellynn.exchange.ExchangePlugin
+commands:
+  echange:
+    usage: /echange
+  test:

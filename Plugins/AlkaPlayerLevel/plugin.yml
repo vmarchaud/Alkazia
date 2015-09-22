@@ -1,0 +1,11 @@
+name: AlkaLevel
+author: PluginMakers
+description: Plugin pour gerer les niveaux
+version: 2.0
+main: fr.thisismac.level.Main
+depend: [PermissionsEx]
+website: http://pluginmakers.fr
+commands:
+  level:
+    description: Obtenez a l'aide de cette commande, votre niveau
+    usage: /level <player>

@@ -1,0 +1,111 @@
+package net.minecraft.server;
+
+import java.util.Iterator;
+
+public class WorldMapHumanTracker {
+
+	public final EntityHuman trackee;
+	public int[] b;
+	public int[] c;
+	private int f;
+	private int g;
+	private byte[] h;
+	public int d;
+	private boolean i;
+	final WorldMap worldMap;
+
+	public WorldMapHumanTracker(WorldMap worldmap, EntityHuman entityhuman) {
+		worldMap = worldmap;
+		b = new int[128];
+		c = new int[128];
+		trackee = entityhuman;
+
+		for (int i = 0; i < b.length; ++i) {
+			b[i] = 0;
+			c[i] = 127;
+		}
+	}
+
+	public byte[] a(ItemStack itemstack) {
+		byte[] abyte;
+
+		if (!i) {
+			abyte = new byte[] { (byte) 2, worldMap.scale };
+			i = true;
+			return abyte;
+		} else {
+			int i;
+			int j;
+
+			// Spigot start
+			boolean custom = worldMap.mapView.renderers.size() > 1 || !(worldMap.mapView.renderers.get(0) instanceof org.bukkit.craftbukkit.map.CraftMapRenderer);
+			org.bukkit.craftbukkit.map.RenderData render = custom ? worldMap.mapView.render((org.bukkit.craftbukkit.entity.CraftPlayer) trackee.getBukkitEntity()) : null; // CraftBukkit
+
+			if (--g < 0) {
+				g = 4;
+				abyte = new byte[(custom ? render.cursors.size() : worldMap.decorations.size()) * 3 + 1]; // CraftBukkit
+				abyte[0] = 1;
+				i = 0;
+
+				// CraftBukkit start
+
+				// Spigot start
+				for (Iterator iterator = custom ? render.cursors.iterator() : worldMap.decorations.values().iterator(); iterator.hasNext(); ++i) {
+					org.bukkit.map.MapCursor cursor = custom ? (org.bukkit.map.MapCursor) iterator.next() : null;
+					if (cursor != null && !cursor.isVisible()) {
+						continue;
+					}
+					WorldMapDecoration deco = custom ? null : (WorldMapDecoration) iterator.next();
+
+					abyte[i * 3 + 1] = (byte) ((custom ? cursor.getRawType() : deco.type) << 4 | (custom ? cursor.getDirection() : deco.rotation) & 15);
+					abyte[i * 3 + 2] = custom ? cursor.getX() : deco.locX;
+					abyte[i * 3 + 3] = custom ? cursor.getY() : deco.locY;
+				}
+				// Spigot end
+				// CraftBukkit end
+
+				boolean flag = !itemstack.A();
+
+				if (h != null && h.length == abyte.length) {
+					for (j = 0; j < abyte.length; ++j) {
+						if (abyte[j] != h[j]) {
+							flag = false;
+							break;
+						}
+					}
+				} else {
+					flag = false;
+				}
+
+				if (!flag) {
+					h = abyte;
+					return abyte;
+				}
+			}
+
+			for (int k = 0; k < 1; ++k) {
+				i = f++ * 11 % 128;
+				if (b[i] >= 0) {
+					int l = c[i] - b[i] + 1;
+
+					j = b[i];
+					byte[] abyte1 = new byte[l + 3];
+
+					abyte1[0] = 0;
+					abyte1[1] = (byte) i;
+					abyte1[2] = (byte) j;
+
+					for (int i1 = 0; i1 < abyte1.length - 3; ++i1) {
+						abyte1[i1 + 3] = (custom ? render.buffer : worldMap.colors)[(i1 + j) * 128 + i];
+					}
+
+					c[i] = -1;
+					b[i] = -1;
+					return abyte1;
+				}
+			}
+
+			return null;
+		}
+	}
+}

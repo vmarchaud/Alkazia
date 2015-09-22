@@ -1,0 +1,9 @@
+name: AlkaBoat
+author: Rellynn
+version: 1.0.1
+main: me.rellynn.plugins.alkaboat.BoatPlugin
+depend: [WorldBorder, Factions]
+commands:
+  bateau:
+    syntax: /bateau
+    description: Connaitre l'heure du spawn du bateau

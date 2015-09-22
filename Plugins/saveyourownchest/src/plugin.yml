@@ -1,0 +1,9 @@
+name: SaveYourOwnChest
+author: Pluginmakers
+version: 1.3
+main: fr.pluginmakers.syoc.Main
+commands:
+  saveenderchests:
+    description: Save actual enderchests content from temporary memory to yml file.
+    usage: /savenederchests
+    permission: SaveYourOwnChest 

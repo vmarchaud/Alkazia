@@ -1,0 +1,17 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # #
+# 													#
+# 				Config AlkaLevel !	 				#
+# 													#
+# # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+bdd:
+  ip: localhost
+  port: 3306
+  bdd: test
+  user: root
+  passwd:
+  tables:
+    name: alkalevel
+    pseudo: AlkaLevel_pseudo
+    xp: AlkaLevel_xp
+    niveau: AlkaLevel_niveau
