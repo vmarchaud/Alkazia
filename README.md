@@ -8,6 +8,14 @@ Beaucoup de temps passé à faire marcher ce serveur, c'était pas toujours faci
 
 Merci à tous les joueurs pour m'avoir fait vivre ça.
 
+# Comment faire pour faire marcher tout ces codes ?
+
+Pour les clients c'est très simple, il suffit de télécharger MCP (http://www.modcoderpack.com/website/releases) qui corresponds la version indiqué  et de lancer le fichier decompile.bat, attendre, copier/coller le dossier src dans le dossier src qu'a crée votre mcp.
+
+Pour les spigot, vous devez récupérer les sources qui correspondent aux versions et faire pareil, copier/coller le dossier src dans le dossier src du projet spigot-server.
+
+Pour les plugins, vous avez juste à importer depuis un projet déjà existant sous eclipse pour le modifier, mais sinon j'ai mis aussi les .jar que vous pouvez directement téléchargé et mettre dans vos dossiers plugins.
+
 # Informations en tout genre
 
 Y'a pas mal de code pour lequel nous avions payé pour les faire développer, j'estime que étant un contributeur de celui-ci et celui qui a payé pour l'avoir, j'ai le droit de le rendre public.
