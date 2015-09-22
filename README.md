@@ -33,6 +33,6 @@ Q : Pourquoi mettre tout ce que t'as fait sur github ?
 - J'ai travaillé pendant un an sur plusieurs choses, certaines ont été faites par d'autres personnes que nous avions payé, mais je préfére que toute la communauté puisse en profiter.
 Aussi parce que je soutiens le mouvement open-source, tout cela servira bien à quelqu'un puisse que plus personne ne s'en sert.
 
-Q : Je voudrais X plugin/code que tu avais fait sur alkazia, est-ce que je pourrais l'avoir ?
+Q : Je voudrais X plugin/code qui était sur alkazia, est-ce que je pourrais l'avoir ?
 - N'hésite pas à me contacter sur mon site http://thisismac.fr ou sur twitter @ThisIsMac47 et je regarderai pour le distribuer.
 
